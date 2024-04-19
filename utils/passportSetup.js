@@ -15,7 +15,7 @@ const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "/api/auth/google/callback",
+    callbackURL: `${process.env.SERVER_URL}/api/auth/google/callback`,
     scope: ['profile', 'email']
 },
     function (accessToken, refreshToken, profile, done) {
@@ -45,7 +45,7 @@ const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET
 passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: "/api/auth/github/callback"
+    callbackURL: `${process.env.SERVER_URL}/api/auth/github/callback`
 },
     function (accessToken, refreshToken, profile, done) {
         console.log(profile)
